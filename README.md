@@ -1,19 +1,99 @@
-# pytest_testframework_embeddeddevice
-This is a flexible and scalable test automation framework built using Pytest for validating embedded and IoT devices. It supports testing over multiple communication interfaces such as MQTT, HTTP, Serial, SSH, and WebSocket. The framework is designed for automated functional, integration, and regression testing of IoT devices across domains like healthcare, automotive, smart home, and industrial IoT.
 
-✅ Key Features
-MQTT Client – Publish/subscribe message verification
-HTTP Client – REST API testing (GET, POST, PUT, DELETE)
-Serial Communication – Command-response validation over UART
-SSH Client – Remote access and command execution
-WebSocket Client – Real-time stream testing
-Terminal Utility – Linux terminal interaction and scripting
-Log Parsing & Conversion – Convert debug logs to CSV, extract KPIs and error codes
-Thread & Time Utilities – Multi-threading support and timing helpers
+# Embedded Device Test Framework (Pytest-Based)
 
-📁 Folder Structure
-lib/ – Core libraries for each protocol
-utils/ – Reusable utilities: regex, timing, threading, KPI checks
-config/ – Device and environment configuration files
-tests/ – Pytest test scripts
-convertDebugLogsToCsv/ – Debug log parser for CSV conversion
+This repository provides a robust and extensible test framework built using `pytest` to test embedded devices via various protocols (MQTT, HTTP, Serial, SSH, WebSocket).
+
+---
+
+## 📦 Folder Structure
+
+```
+embedded_test_framework/
+├── conftest.py                # Pytest fixtures
+├── pytest.ini                 # Pytest configuration
+├── requirements.txt           # Python dependencies
+├── config/                    # Device and global configuration files
+├── converters/                # Log conversion tools
+├── dataset/                   # Input/output test data
+├── lib/                       # Protocol client/server libraries
+├── scripts/                   # Optional helper scripts
+├── tests/                     # Pytest test cases
+└── utils/                     # Utility functions (terminal, regex, threading, etc.)
+```
+
+---
+
+## ✅ Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## ▶️ Running Tests
+
+```bash
+pytest
+```
+
+You can run individual tests:
+
+```bash
+pytest tests/test_device_config.py
+```
+
+---
+
+## ⚙️ Configuration
+
+Edit `config/config_dev1.json` and `config/common_settings.yaml` to match your embedded device setup.
+
+---
+
+## 🔌 Supported Protocols
+
+- **MQTT** — `lib/mqtt_client.py`
+- **HTTP** — `lib/http_server.py`
+- **Serial** — `lib/serial_comm.py`
+- **SSH** — `lib/ssh_client.py`
+- **WebSocket** — `lib/websocket_client.py`
+
+---
+
+## 🛠 Utilities
+
+- **Terminal commands**: `utils/terminal_util.py`
+- **Regex operations**: `utils/regex_util.py`
+- **Path management**: `utils/path_util.py`
+- **Threading**: `utils/thread_util.py`
+- **Timing**: `utils/time_util.py`
+- **KPI calculation**: `utils/kpi_util.py`
+
+---
+
+## 📄 Sample Tests
+
+- `test_device_config.py` — Ping device based on config
+- `test_logs_conversion.py` — Convert raw logs to CSV format
+
+---
+
+## 📁 Log Conversion
+
+Log files can be converted using `converters/debug_logs_to_csv.py` to simplify analysis.
+
+---
+
+## 📌 Notes
+
+- Make sure devices are connected and network-accessible.
+- Update serial/SSH credentials in the config files.
+- Use `pytest -s` to see real-time terminal output.
+
+---
+
+## 📬 Contributions
+
+Feel free to extend this framework with more tests, protocol support, or utilities. PRs are welcome!
+
