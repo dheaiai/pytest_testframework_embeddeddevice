@@ -1,0 +1,5 @@
+pytest
+paho-mqtt
+paramiko
+pyserial
+websocket-client
